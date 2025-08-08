@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,4 +127,15 @@ ALLOWED_HOSTS = ['*']  # for now; later restrict to your domain
 DEBUG = False
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+#Database
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
 
