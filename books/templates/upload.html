@@ -1,0 +1,9 @@
+<h1>Upload an eBook</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+</form>
+
+<a href="{% url 'home' %}">← Back to Home</a>
